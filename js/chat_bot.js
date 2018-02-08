@@ -1,9 +1,9 @@
 setInterval(function() {
         var frame = document.getElementsByTagName('iframe')[10];
-        $(frame).contents().find('#T2').find('input').val('private [trade] Ищу вынос из березы курс в приват :rupor: :rupor: :rupor:');
+        $(frame).contents().find('#T2').find('input').val('private [trade] Куплю благо 3/7 пм :rupor:');
         $(frame).contents().find('[src="http://img.combats.ru/i/move/b___ok.gif"]').click();
     },
-    1000 * 60 * 5
+    1000 * 60 * 4
 );
 
 

@@ -14,7 +14,9 @@ var questInterval = setInterval(
             step++;
         } else {
             clearInterval(questInterval);
-            buyNoobieItems();
+            setTimeout(function () {
+                buyNoobieItems();
+            }, 5000);
         }
     },
     1000
@@ -148,10 +150,10 @@ function goToShop() {
                                                 $(frame).contents().find('[onclick="return buy_for_teeth(this);"]')[3].click();
 
                                                 setTimeout(function () {
-                                                    $(frame).attr('src', '/shop.pl?otdel3=1&sid=&' + Math.random());
+                                                    $(frame).attr('src', '/shop.pl?otdel1=1&sid=&' + Math.random());
 
                                                     setTimeout(function () {
-                                                        $(frame).contents().find('[onclick="return buy_for_teeth(this);"]')[0].click();
+                                                        $(frame).contents().find('[onclick="return buy_for_teeth(this);"]')[3].click();
 
                                                         setTimeout(function () {
                                                             $(frame).attr('src', '/shop.pl?otdel52=1&sid=&' + Math.random());
