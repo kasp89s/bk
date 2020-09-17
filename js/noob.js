@@ -10,13 +10,13 @@ function startBattle() {
     var useSkill = setInterval(function() {
         $('.UserBattleMethod').each(
             function() {
-                if ($(this).find('img').attr('src') == 'http://img.combats.ru/i/misc/icons/novice_hit.gif') {
+                if ($(this).find('img').attr('src') == 'http://img.combats.com/i/misc/icons/novice_hit.gif') {
                     $(this).click();
                 }
-                if ($(this).find('img').attr('src') == 'http://img.combats.ru/i/misc/icons/hit_strong.gif') {
+                if ($(this).find('img').attr('src') == 'http://img.combats.com/i/misc/icons/hit_strong.gif') {
                     $(this).click();
                 }
-                if ($(this).find('img').attr('src') == 'http://img.combats.ru/i/misc/icons/block_activeshield.gif') {
+                if ($(this).find('img').attr('src') == 'http://img.combats.com/i/misc/icons/block_activeshield.gif') {
                     $(this).click();
                 }
             }
@@ -69,10 +69,10 @@ function serverListener() {
         var sendData = $(frame).contents().find('b'),
             login = $(sendData[0]).text(),
             iznos = $(frame).contents().find('img:[height="40"]'),
-            travma1 = $(frame).contents().find('[src="http://img.combats.ru/i/misc/icons/eff_travma1.gif"]'),
-            travma2 = $(frame).contents().find('[src="http://img.combats.ru/i/misc/icons/eff_travma2.gif"]'),
-            travma3 = $(frame).contents().find('[src="http://img.combats.ru/i/misc/icons/eff_travma3.gif"]'),
-            chokolateImage = $(frame).contents().find('[src="http://img.combats.ru/i/misc/icons/ny2013_chocolate.gif"]'),
+            travma1 = $(frame).contents().find('[src="http://img.combats.com/i/misc/icons/eff_travma1.gif"]'),
+            travma2 = $(frame).contents().find('[src="http://img.combats.com/i/misc/icons/eff_travma2.gif"]'),
+            travma3 = $(frame).contents().find('[src="http://img.combats.com/i/misc/icons/eff_travma3.gif"]'),
+            chokolateImage = $(frame).contents().find('[src="http://img.combats.com/i/misc/icons/ny2013_chocolate.gif"]'),
             travma = false,
             chokolate = false,
             exp = (parseInt($(sendData[1]).text().replace(/\s+/g,'')) > 0) ? $(sendData[1]).text() : $(sendData[2]).text(),
