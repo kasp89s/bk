@@ -93,11 +93,11 @@ function setSkills() {
                         $(frame).contents().find('#L4').click();
 
                         setTimeout(function () {
-                            $(frame).contents().find('[src="http://img.combats.ru/i/misc/icons/novice_hit.gif"]').click();
+                            $(frame).contents().find('[src="http://img.combats.com/i/misc/icons/novice_hit.gif"]').click();
                             setTimeout(function () {
-                                $(frame).contents().find('[src="http://img.combats.ru/i/misc/icons/hit_strong.gif"]').click();
+                                $(frame).contents().find('[src="http://img.combats.com/i/misc/icons/hit_strong.gif"]').click();
                                 setTimeout(function () {
-                                    $(frame).contents().find('[src="http://img.combats.ru/i/misc/icons/block_activeshield.gif"]').click();
+                                    $(frame).contents().find('[src="http://img.combats.com/i/misc/icons/block_activeshield.gif"]').click();
                                     setTimeout(function () {
                                         goToShop();
                                     }, 2000);
@@ -115,10 +115,10 @@ function goToShop() {
     $(frame).attr('src', 'main.pl?top=' + Math.random());
 
     setTimeout(function () {
-        $(frame).contents().find('[src="http://img.combats.ru/i/images/subimages/dream_warriors_hall_door.gif"]')[0].click();
+        $(frame).contents().find('[src="http://img.combats.com/i/images/subimages/dream_warriors_hall_door.gif"]')[0].click();
 
         setTimeout(function () {
-            $(frame).contents().find('[src="http://img.combats.ru/i/images/subimages/drm_street_all_arrow_2.png"]')[0].click();
+            $(frame).contents().find('[src="http://img.combats.com/i/images/subimages/drm_street_all_arrow_2.png"]')[0].click();
 
             setTimeout(function () {
                 $(frame).attr('src', '/main.pl?move_dialog=1&' + Math.random());
@@ -129,16 +129,16 @@ function goToShop() {
                         $(frame).attr('src', '/main.pl?move_dialog=0&' + Math.random());
 
                         setTimeout(function () {
-                            $(frame).contents().find('[src="http://img.combats.ru/i/images/subimages/drm_street_all_arrow_2.png"]')[0].click();
+                            $(frame).contents().find('[src="http://img.combats.com/i/images/subimages/drm_street_all_arrow_2.png"]')[0].click();
                             setTimeout(function () {
-                                if ($(frame).contents().find('[src="http://img.combats.ru/i/images/subimages/drm_street_strash_shop.gif"]')[0] != null) {
-                                    $(frame).contents().find('[src="http://img.combats.ru/i/images/subimages/drm_street_strash_shop.gif"]')[0].click();
-                                } else if ($(frame).contents().find('[src="http://img.combats.ru/i/images/subimages/night/drm_street_strash_shop.gif"]')[0] != null) {
-                                    $(frame).contents().find('[src="http://img.combats.ru/i/images/subimages/night/drm_street_strash_shop.gif"]')[0].click();
+                                if ($(frame).contents().find('[src="http://img.combats.com/i/images/subimages/drm_street_strash_shop.gif"]')[0] != null) {
+                                    $(frame).contents().find('[src="http://img.combats.com/i/images/subimages/drm_street_strash_shop.gif"]')[0].click();
+                                } else if ($(frame).contents().find('[src="http://img.combats.com/i/images/subimages/night/drm_street_strash_shop.gif"]')[0] != null) {
+                                    $(frame).contents().find('[src="http://img.combats.com/i/images/subimages/night/drm_street_strash_shop.gif"]')[0].click();
                                 }
 
                                 setTimeout(function () {
-                                    $(frame).contents().find('[src="http://img.combats.ru/i/images/subimages/dream_middle_shop_bot.gif"]')[0].click();
+                                    $(frame).contents().find('[src="http://img.combats.com/i/images/subimages/dream_middle_shop_bot.gif"]')[0].click();
 
                                     setTimeout(function () {
                                         $(frame).attr('src', '/main.pl?move_dialog=1&' + Math.random());
@@ -184,10 +184,10 @@ function returnFromStore() {
     $(frame).contents().find('[onclick="return check_access();"]')[0].click();
 
     setTimeout(function () {
-        if ($(frame).contents().find('[src="http://img.combats.ru/i/images/subimages/drm_street_central_bk.gif"]')[0] != null) {
-            $(frame).contents().find('[src="http://img.combats.ru/i/images/subimages/drm_street_central_bk.gif"]')[0].click();
-        } else if ($(frame).contents().find('[src="http://img.combats.ru/i/images/subimages/night/drm_street_central_bk.gif"]')[0] != null) {
-            $(frame).contents().find('[src="http://img.combats.ru/i/images/subimages/night/drm_street_central_bk.gif"]')[0].click();
+        if ($(frame).contents().find('[src="http://img.combats.com/i/images/subimages/drm_street_central_bk.gif"]')[0] != null) {
+            $(frame).contents().find('[src="http://img.combats.com/i/images/subimages/drm_street_central_bk.gif"]')[0].click();
+        } else if ($(frame).contents().find('[src="http://img.combats.com/i/images/subimages/night/drm_street_central_bk.gif"]')[0] != null) {
+            $(frame).contents().find('[src="http://img.combats.com/i/images/subimages/night/drm_street_central_bk.gif"]')[0].click();
             setTimeout(function () {
                 equipItems();
             }, 2000);
