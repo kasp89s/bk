@@ -10,44 +10,44 @@ function startBattle() {
     var useSkill = setInterval(function() {
         $('.UserBattleMethod').each(
             function() {
-                if ($(this).find('img').attr('src') == 'http://img.combats.ru/i/misc/icons/preparation.gif') {
+                if ($(this).find('img').attr('src') == 'http://img.combats.com/i/misc/icons/preparation.gif') {
                     $(this).click();
                 }
                 //Приемы воина.
-                if ($(this).find('img').attr('src') == 'http://img.combats.ru/i/misc/icons/hit_strong.gif') {
+                if ($(this).find('img').attr('src') == 'http://img.combats.com/i/misc/icons/hit_strong.gif') {
                     $(this).click();
                 }
-                if ($(this).find('img').attr('src') == 'http://img.combats.ru/i/misc/icons/block_wrath.gif') {
+                if ($(this).find('img').attr('src') == 'http://img.combats.com/i/misc/icons/block_wrath.gif') {
                     $(this).click();
                 }
-                if ($(this).find('img').attr('src') == 'http://img.combats.ru/i/misc/icons/block_path.gif') {
+                if ($(this).find('img').attr('src') == 'http://img.combats.com/i/misc/icons/block_path.gif') {
                     $(this).click();
                 }
-                if ($(this).find('img').attr('src') == 'http://img.combats.ru/i/misc/icons/block_restore.gif') {
+                if ($(this).find('img').attr('src') == 'http://img.combats.com/i/misc/icons/block_restore.gif') {
                     $(this).click();
                 }
 
                 //Приемы арбалета.
-                if ($(this).find('img').attr('src') == 'http://img.combats.ru/i/misc/icons/defence_bestposition.gif') {
+                if ($(this).find('img').attr('src') == 'http://img.combats.com/i/misc/icons/defence_bestposition.gif') {
                     $(this).click();
                 }
-                if ($(this).find('img').attr('src') == 'http://img.combats.ru/i/misc/icons/attack_strongshot.gif') {
+                if ($(this).find('img').attr('src') == 'http://img.combats.com/i/misc/icons/attack_strongshot.gif') {
                     $(this).click();
                 }
-                if ($(this).find('img').attr('src') == 'http://img.combats.ru/i/misc/icons/attack_bloodflow.gif') {
+                if ($(this).find('img').attr('src') == 'http://img.combats.com/i/misc/icons/attack_bloodflow.gif') {
                     $(this).click();
                 }
-                if ($(this).find('img').attr('src') == 'http://img.combats.ru/i/misc/icons/attack_ragecounter.gif') {
+                if ($(this).find('img').attr('src') == 'http://img.combats.com/i/misc/icons/attack_ragecounter.gif') {
                     $(this).click();
                 }
 
-                if ($(this).find('img').attr('src') == 'http://img.combats.ru/i/misc/icons/spirit_13_prot_100.gif') {
+                if ($(this).find('img').attr('src') == 'http://img.combats.com/i/misc/icons/spirit_13_prot_100.gif') {
                     $(this).click();
                 }
-                if ($(this).find('img').attr('src') == 'http://img.combats.ru/i/misc/icons/hp_enrage.gif') {
+                if ($(this).find('img').attr('src') == 'http://img.combats.com/i/misc/icons/hp_enrage.gif') {
                     $(this).click();
                 }
-                if ($(this).find('img').attr('src') == 'http://img.combats.ru/i/misc/icons/hp_defence.gif') {
+                if ($(this).find('img').attr('src') == 'http://img.combats.com/i/misc/icons/hp_defence.gif') {
                     $(this).click();
                 }
             }
@@ -94,7 +94,7 @@ function inviteBattle() {
 
                 setTimeout(function () {
                     var myLevel = parseInt($(frame).contents().find('b').first().prev().text().match(/"\d"/)[0].replace(/"/g, "")),
-                        battleChecks = $(frame).contents().find('[src="http://img.combats.ru/i/fighttype2.gif"]').last().prevAll('[name="gocombat"]');
+                        battleChecks = $(frame).contents().find('[src="http://img.combats.com/i/fighttype2.gif"]').last().prevAll('[name="gocombat"]');
 
                     $.each(battleChecks, function(i, element){
                         if ($(element).next().next().text().match(/"\d"/) != null) {
@@ -141,16 +141,16 @@ function returnFromGraveyard() {
 	    var frame = document.getElementsByTagName('iframe')[8];
 
 		setTimeout(function () {
-			$(frame).contents().find('[src="http://img.combats.ru/i/images/subimages/sun_new_gate.gif"]')[0].click();
+			$(frame).contents().find('[src="http://img.combats.com/i/images/subimages/sun_new_gate.gif"]')[0].click();
 			
 				setTimeout(function () {
-					$(frame).contents().find('[src="http://img.combats.ru/i/images/subimages/sn_arrow.gif"]')[1].click();
+					$(frame).contents().find('[src="http://img.combats.com/i/images/subimages/sn_arrow.gif"]')[1].click();
 					
 					setTimeout(function () {
-						            if ($(frame).contents().find('[src="http://img.combats.ru/i/images/subimages/sn_club.gif"]')[0] != null) {
-										$(frame).contents().find('[src="http://img.combats.ru/i/images/subimages/sn_club.gif"]')[0].click();
-									} else if ($(frame).contents().find('[src="http://img.combats.ru/i/images/subimages/night/sn_club.gif"]')[0] != null) {
-										$(frame).contents().find('[src="http://img.combats.ru/i/images/subimages/night/sn_club.gif"]')[0].click();
+						            if ($(frame).contents().find('[src="http://img.combats.com/i/images/subimages/sn_club.gif"]')[0] != null) {
+										$(frame).contents().find('[src="http://img.combats.com/i/images/subimages/sn_club.gif"]')[0].click();
+									} else if ($(frame).contents().find('[src="http://img.combats.com/i/images/subimages/night/sn_club.gif"]')[0] != null) {
+										$(frame).contents().find('[src="http://img.combats.com/i/images/subimages/night/sn_club.gif"]')[0].click();
 									}
 						
 						            setTimeout(function () {
@@ -183,16 +183,16 @@ function serverListener() {
     var frame = document.getElementsByTagName('iframe')[8];
     $(frame).attr('src', 'main.pl?top=' + Math.random());
     setTimeout(function () {
-		if ($(frame).contents().find('[src="http://img.combats.ru/i/images/subimages/sun_new_gate.gif"]').attr('src') != null) {
+		if ($(frame).contents().find('[src="http://img.combats.com/i/images/subimages/sun_new_gate.gif"]').attr('src') != null) {
 					stopBattle();
 					returnFromGraveyard();
 				}
         var sendData = $(frame).contents().find('b'),
             login = $(sendData[0]).text(),
             iznos = $(frame).contents().find('img:[height="40"]'),
-            travma1 = $(frame).contents().find('[src="http://img.combats.ru/i/misc/icons/eff_travma1.gif"]'),
-            travma2 = $(frame).contents().find('[src="http://img.combats.ru/i/misc/icons/eff_travma2.gif"]'),
-            travma3 = $(frame).contents().find('[src="http://img.combats.ru/i/misc/icons/eff_travma3.gif"]'),
+            travma1 = $(frame).contents().find('[src="http://img.combats.com/i/misc/icons/eff_travma1.gif"]'),
+            travma2 = $(frame).contents().find('[src="http://img.combats.com/i/misc/icons/eff_travma2.gif"]'),
+            travma3 = $(frame).contents().find('[src="http://img.combats.com/i/misc/icons/eff_travma3.gif"]'),
             travma = false,
             exp = (parseInt($(sendData[1]).text().replace(/\s+/g,'')) > 0) ? $(sendData[1]).text() : $(sendData[2]).text(),
 			kredits = $(sendData[3]).text();
