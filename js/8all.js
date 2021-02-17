@@ -93,7 +93,7 @@ function inviteBattle() {
                 $(frame).attr('src', 'zayavka.pl?level=haos&' + Math.random());
 
                 setTimeout(function () {
-                    var myLevel = parseInt($(frame).contents().find('b').first().prev().text().match(/"\d"/)[0].replace(/"/g, "")),
+                    var myLevel = parseInt($(frame).contents().find('b').first().prev().text().match(/"\d{1,2}"/)[0].replace(/"/g, "")),
                         battleChecks = $(frame).contents().find('[src="http://img.combats.com/i/fighttype2.gif"]').last().prevAll('[name="gocombat"]');
 
                     $.each(battleChecks, function(i, element){
