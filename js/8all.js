@@ -97,8 +97,8 @@ function inviteBattle() {
                         battleChecks = $(frame).contents().find('[src="http://img.combats.com/i/fighttype2.gif"]').last().prevAll('[name="gocombat"]');
 
                     $.each(battleChecks, function(i, element){
-                        if ($(element).next().next().text().match(/"\d"/) != null) {
-                            var battleLevel = $(element).next().next().text().match(/"\d"/)[0].replace(/"/g, "");
+                        if ($(element).next().next().text().match(/"\d{1,2}"/) != null) {
+                            var battleLevel = $(element).next().next().text().match(/"\d{1,2}"/)[0].replace(/"/g, "");
                             if (parseInt(battleLevel) == myLevel) {
                                 //console.log(battleLevel + ' good');
                                 $(element).click();
