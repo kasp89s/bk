@@ -733,7 +733,7 @@ function extractDomain(url) {
 
 var exitTimeout = setTimeout(function() {
     console.log('exit');
-    window.location.href = 'https://www.google.com.ua/?reload=1&domain=' + extractDomain(document.location.href);
+    window.location.href = 'https:/rozetka.com.ua?reload=1&domain=' + extractDomain(document.location.href);
 }, Math.floor(Math.random() * (8200000 - 7200000 + 1)) + 7200000);
 console.log('set exitTimeout ' + exitTimeout);
 
