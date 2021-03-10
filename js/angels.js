@@ -4,14 +4,26 @@
 var COMMAND_MAP = [
         // 'up','up','left','up','left','up','up','up','left','up','right','up','up','up','up','up','up',
         // 'right','up','up','up','up','right','up','up','up','up','right','up','up','up','right','up','up','up',
-        // 'right','up','right','useObject(\'Ниша в стене\', 1)','left'
-        'useObject(\'Заросший тайник\', 3)','right','up','right','up',
+        // 'right','up','right','useObject(\'Ниша в стене\', 1)','left','useObject(\'Заросший тайник\', 1)','right','up','right','up',
+        // 'left','up','up','left','up',
+        'useObject(\'Заросший проход\', 1)',
     ],
     CURRENT_COMMAND,
     DELAY = 1000,
     SWEEP_ITEMS = [
-        'http://img.combats.com/i/items/mater_small_lvl4_reward.gif' //гайка
+        'http://img.combats.com/i/items/cureMana500_0_gg.gif' //гайка
     ];
+
+function checkFuckingGoblin() {
+     var frame = document.getElementsByTagName('iframe')[8],
+         fuckingLink = $(frame).contents().find('a:contains(\'Ээээ....\')');
+        
+     if (fuckingLink.length == 0)
+             return true;
+        
+     console.log('Пидар тут нам пизда');
+     fuckingLink[0].click();
+}
 
 /**
  * Запускает комманду.
