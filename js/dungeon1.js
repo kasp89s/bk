@@ -34,6 +34,33 @@ var COMMAND_MAP = {
         'up','right','up','left','up','left','up','right','up','left','up','up','right','up','up','right','up','up','left',
         'up','up','up','up','left','up','right','right','up','left','up','up','right','up','up','right','up','left','up','up','left','up','up','left','up','up'
     ],
+    angelscity: [
+        // 1 этаж
+        'up','right','up','up','left','up','up','up','right','up','up','right','up','useObject(\'Сундук\', 3)','left','left','up','up',
+        'useObject(\'Сундук\', 3)','left','left','up','right','up','up','right','up','up','up','left','up','up','left','up','up','left','right','right',
+        'useObject(\'Останки вашего предшественника\', 3)','left','up','left','right','right','up','useObject(\'Алтарь Бездны\', 1)',
+        'up','left','left','up','up','up','left','left','up','left','left','useObject(\'Останки вашего предшественника\', 3)','left','left',
+        'up','up','left','up','up','up','left','up','up','up','up','up','up','up','useObject(\'Спуск\', 1)',
+        // 2 этаж
+        'up','right','up','left','up','right','up','up','useObject(\'Выбоина\', 1)','left','left','up','right','up','up','right','up',
+        'useObject(\'Выбоина\', 1)','left','left','up','right','up','up','up','up','right','up','useObject(\'Выбоина\', 1)','right',
+        'right','up','left','up','up','up','right','up','up','right','useObject(\'Тележка\', 1)','left','left','useObject(\'Котел\', 1)','right','up','right',
+        'useObject(\'Останки вашего предшественника\', 3)','left','left','up','right','up','up','left','up','up','useObject(\'Останки вашего предшественника\', 3)',
+        'up','right','up','useObject(\'Выбоина\', 1)','right','right','up','left','up','up','left','up','useObject(\'Выбоина\', 1)','right','right',
+        'up','left','up','up','left','up','useObject(\'Выбоина\', 1)','right','right','up','left','up','up','left','up','useObject(\'Выбоина\', 1)','right',
+        'right','up','left','up','useObject(\'Тележка\', 1)','up','left','up','useObject(\'Выбоина\', 1)','left','left',
+        'up','right','up','left','up','up','up','left','useObject(\'Спуск\', 1)',
+        // 3 этаж
+        'up','up','left','up','up','left','useObject(\'Кровать\', 1)','right','up','useObject(\'Кровать\', 1)','left','up','useObject(\'Кровать\', 1)',
+        'right','useObject(\'Сундук\', 1)','left','up','right','useObject(\'Кровать\', 1)','left','left','useObject(\'Кровать\', 1)','left','up','up','right',
+        'up','up','up','left','up','up','useObject(\'Останки вашего предшественника\', 3)','left','up','up','right','up','useObject(\'Кровать\', 1)',
+        'left','up','useObject(\'Сундук\', 1)','right','useObject(\'Кровать\', 1)','left','up','right','useObject(\'Кровать\', 1)','left','left',
+        'useObject(\'Кровать\', 1)','left','up','up','right','up','left','up','up','left','up','right','up','up','left','up',
+        'useObject(\'Сундук\', 1)','up','right','useObject(\'Сундук\', 1)','up','right','up','up','right','up','up','up','right',
+        'up','up','up','left','up','up','right','useObject(\'Кровать\', 1)','left','left','useObject(\'Кровать\', 1)','right','up',
+        'useObject(\'Сундук\', 1)','left','useObject(\'Кровать\', 1)','right','right','useObject(\'Кровать\', 1)','left','up','right',
+        'useObject(\'Кровать\', 1)','right','right','useObject(\'Кровать\', 1)','left'
+    ],
     dreamscity: [
 
     ]
@@ -45,6 +72,8 @@ var COMMAND_MAP = {
     SWEEP_ITEMS = [
         'http://img.combats.com/i/items/cureMana500_0_gg.gif', //гайка
         'http://img.combats.com/i/items/cureMana250_0.gif', //гайка
+        'http://img.combats.com/i/items/bb_key1.gif', //гайка
+        'http://img.combats.com/i/items/cureHP45.gif', //гайка
     ];
 
 /**
@@ -55,7 +84,7 @@ var COMMAND_MAP = {
 function dungeonDaemon()
 {
     overMission(function () {
-        DAEMON_INTERVAL = setInterval(riskyControl, DELAY * 10);
+        DAEMON_INTERVAL = setInterval(riskyControl, DELAY * 60);
     });
 }
 
@@ -67,41 +96,51 @@ function riskyControl()
     var frame = document.getElementsByTagName('iframe')[8],
         riskyInfo = $(frame).contents().find('h3[style="font-size: small; "]').text().replace(/[^+\d.]/g, ''),
         pay = parseInt(riskyInfo.substr(0, 2)),
+        refreshButton = $(frame).contents().find('input[value="Обновить"]'),
         current = parseInt(riskyInfo.substr(2, 4));
 
-    if (current >= pay)
+    console.log(current + ' риска а надо ' + pay + ' ждем...')
+    if (current >= pay) {
         applyMission(enterDungeon);
+    } else {
+        refreshButton[0].click();
+    }
 }
 
 /**
  * Вход в подземку
  */
 function enterDungeon() {
-    var frame = document.getElementsByTagName('iframe')[8];
-    $(frame).contents().find('input[name="pass"]').val('005');
+    try {
+        var frame = document.getElementsByTagName('iframe')[8];
+        $(frame).contents().find('input[name="pass"]').val('005');
 
-    setTimeout(function () {
-        var frame = document.getElementsByTagName('iframe')[8],
-            createButton = $(frame).contents().find('input[value="Создать группу"]');
-
-        createButton[0].onclick = '';
-        createButton[0].click();
         setTimeout(function () {
             var frame = document.getElementsByTagName('iframe')[8],
-                enterButton = $(frame).contents().find('input[value="Начать"]');
+                createButton = $(frame).contents().find('input[value="Создать группу"]');
 
-            enterButton[0].click();
+            createButton[0].onclick = '';
+            createButton[0].click();
             setTimeout(function () {
                 var frame = document.getElementsByTagName('iframe')[8],
-                    updateButton = $(frame).contents().find('input[value="Обновить"]');
+                    enterButton = $(frame).contents().find('input[value="Начать"]');
 
-                updateButton[0].click();
+                enterButton[0].click();
                 setTimeout(function () {
-                    runNextCommand();
+                    var frame = document.getElementsByTagName('iframe')[8],
+                        updateButton = $(frame).contents().find('input[value="Обновить"]');
+
+                    updateButton[0].click();
+                    setTimeout(function () {
+                        runNextCommand();
+                    }, DELAY * 5);
                 }, DELAY * 5);
-            }, DELAY * 5);
+            }, DELAY * 2);
         }, DELAY * 2);
-    }, DELAY * 2);
+    } catch (e) {
+        console.log('Ошибка ' + e);
+        runNextCommand();
+    }
 }
 
 /**
@@ -483,6 +522,11 @@ function startBattle() {
                         'http://img.combats.com/i/misc/icons/krit_deepwounds.gif',
                         'http://img.combats.com/i/misc/icons/hp_enrage.gif',
                         'http://img.combats.com/i/misc/icons/hp_cleance.gif',
+
+                        'http://img.combats.com/i/misc/icons/novice_hit.gif',
+                        'http://img.combats.com/i/misc/icons/hit_strong.gif',
+                        'http://img.combats.com/i/misc/icons/block_activeshield.gif',
+
                     ]
                 ) !== -1) {
                     $(this).click();
