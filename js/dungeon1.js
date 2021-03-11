@@ -2,79 +2,108 @@
  * javascript:dung_link('get=426839') - гайка
  */
 var COMMAND_MAP = {
-    suncity: [
-        'up','up','left','up','left','up','up','up','left','up','right','up','up','up','up','up','up',
-        'right','up','up','up','up','right','up','up','up','up','right','up','up','up','right','up','up','up',
-        'right','up','right','useObject(\'Ниша в стене\', 1)','left','useObject(\'Заросший тайник\', 1)','right','up','right','up',
-        'left','up','up','left','up','useObject(\'Заросший проход\', 1)','right','up','left','up',
-        'useObject(\'Ниша в стене\', 1)','left','up','up','left','up','left','up','up','left','up','useObject(\'Ниша в стене\', 1)',
-        'left','up','right','up','up','up','left','up','left','up','right','up','up','up','right','up','left','useObject(\'Заросший проход\', 1)',
-        'left','up','up','right','right','up','up','right','useObject(\'Заросший проход\', 1)','right','up','left','up',
-        'right','up','up','up','right','up','right','up','left','up','up','left','up','left','up','right','up','left','up','right','up','up',
-        'up','up','right','up','up','right','up','up','right','up','up','left','up','up','left','up','right','up','left','up','left',
-        'useObject(\'Спуск\', 1)','up','right','up','up','right','up','left','up','up','left','up','up',
-        'left','up','up','up','right','right','up','up','left','useObject(\'Ниша в полу\', 1)','right','up','left','up','right','up','left','up','up',
-        'left','up','up','left','up','right','up','up','up','right','up','right','up','up','left','up','up','left','up','up','up',
-        'right','up','up','left','up','left','up','right','up','right','up','left','left','up','right','useObject(\'Ниша в стене\', 1)',
-        'right','right','up','left','up','right','up','right','up','up','left','useObject(\'Спуск в нору\', 1)','up',
-        'useObject(\'Заросший тайник\', 1)','right','right','useObject(\'Подъем\', 1)',
-        'left','up','right','up','up','right','up','up','right','up','left','up','useObject(\'Хитиновый люк\', 1)','up',
-        'useObject(\'Заросший тайник\', 3)',
-        /**
-         * На третий этаж
-         */
-        'right','right','up','useObject(\'Хитиновый люк\', 1)','up','right','up','left','up','up','left','up','up','left','up','up','up','right','up','right',
-        'useObject(\'Спуск в Глубины Грибницы\', 1)','right','up','up','up','up','up','up','up','left','up','useObject(\'Светляк\', 1)','right',
-        'up','up','left','up','right','up','left','left','up','left','up','right','up','up','left','up','right','up','up','up','up','up','up','right','up',
-        'up','up','up','up','up','up','up','up','up','right','up','up','up','right','up','useObject(\'Светляк\', 1)','left','up','up','left',
-        'up','up','up','left','up','up','up','up','left','up','up','up','right','right','up','left','up','up','left','up',
-        'up','up','left','up','up','left','left','up','up','right','up','up','left','up','up','left','up',
-        'up','right','up','up','right','up','left','up','left','left','up','right','up','left','up','up','left','up','up',
-        'up','up','left','up','up','right','up','up','right','up','up','left','up','right',
-        'up','right','up','left','up','left','up','right','up','left','up','up','right','up','up','right','up','up','left',
-        'up','up','up','up','left','up','right','right','up','left','up','up','right','up','up','right','up','left','up','up','left','up','up','left','up','up'
-    ],
-    angelscity: [
-        // 1 этаж
-        'up','right','up','up','left','up','up','up','right','up','up','right','up','useObject(\'Сундук\', 3)','left','left','up','up',
-        'useObject(\'Сундук\', 3)','left','left','up','right','up','up','right','up','up','up','left','up','up','left','up','up','left','right','right',
-        'useObject(\'Останки вашего предшественника\', 3)','left','up','left','right','right','up','useObject(\'Алтарь Бездны\', 1)',
-        'up','left','left','up','up','up','left','left','up','left','left','useObject(\'Останки вашего предшественника\', 3)','left','left',
-        'up','up','left','up','up','up','left','up','up','up','up','up','up','up','useObject(\'Спуск\', 1)',
-        // 2 этаж
-        'up','right','up','left','up','right','up','up','useObject(\'Выбоина\', 1)','left','left','up','right','up','up','right','up',
-        'useObject(\'Выбоина\', 1)','left','left','up','right','up','up','up','up','right','up','useObject(\'Выбоина\', 1)','right',
-        'right','up','left','up','up','up','right','up','up','right','useObject(\'Тележка\', 1)','left','left','useObject(\'Котел\', 1)','right','up','right',
-        'useObject(\'Останки вашего предшественника\', 3)','left','left','up','right','up','up','left','up','up','useObject(\'Останки вашего предшественника\', 3)',
-        'up','right','up','useObject(\'Выбоина\', 1)','right','right','up','left','up','up','left','up','useObject(\'Выбоина\', 1)','right','right',
-        'up','left','up','up','left','up','useObject(\'Выбоина\', 1)','right','right','up','left','up','up','left','up','useObject(\'Выбоина\', 1)','right',
-        'right','up','left','up','useObject(\'Тележка\', 1)','up','left','up','useObject(\'Выбоина\', 1)','left','left',
-        'up','right','up','left','up','up','up','left','useObject(\'Спуск\', 1)',
-        // 3 этаж
-        'up','up','left','up','up','left','useObject(\'Кровать\', 1)','right','up','useObject(\'Кровать\', 1)','left','up','useObject(\'Кровать\', 1)',
-        'right','useObject(\'Сундук\', 1)','left','up','right','useObject(\'Кровать\', 1)','left','left','useObject(\'Кровать\', 1)','left','up','up','right',
-        'up','up','up','left','up','up','useObject(\'Останки вашего предшественника\', 3)','left','up','up','right','up','useObject(\'Кровать\', 1)',
-        'left','up','useObject(\'Сундук\', 1)','right','useObject(\'Кровать\', 1)','left','up','right','useObject(\'Кровать\', 1)','left','left',
-        'useObject(\'Кровать\', 1)','left','up','up','right','up','left','up','up','left','up','right','up','up','left','up',
-        'useObject(\'Сундук\', 1)','up','right','useObject(\'Сундук\', 1)','up','right','up','up','right','up','up','up','right',
-        'up','up','up','left','up','up','right','useObject(\'Кровать\', 1)','left','left','useObject(\'Кровать\', 1)','right','up',
-        'useObject(\'Сундук\', 1)','left','useObject(\'Кровать\', 1)','right','right','useObject(\'Кровать\', 1)','left','up','right',
-        'useObject(\'Кровать\', 1)','right','right','useObject(\'Кровать\', 1)','left'
-    ],
-    dreamscity: [
+        suncity: [
+            'up','up','left','up','left','up','up','up','left','up','right','up','up','up','up','up','up',
+            'right','up','up','up','up','right','up','up','up','up','right','up','up','up','right','up','up','up',
+            'right','up','right','useObject(\'Ниша в стене\', 1)','left','useObject(\'Заросший тайник\', 1)','right','up','right','up',
+            'left','up','up','left','up','useObject(\'Заросший проход\', 1)','right','up','left','up',
+            'useObject(\'Ниша в стене\', 1)','left','up','up','left','up','left','up','up','left','up','useObject(\'Ниша в стене\', 1)',
+            'left','up','right','up','up','up','left','up','left','up','right','up','up','up','right','up','left','useObject(\'Заросший проход\', 1)',
+            'left','up','up','right','right','up','up','right','useObject(\'Заросший проход\', 1)','right','up','left','up',
+            'right','up','up','up','right','up','right','up','left','up','up','left','up','left','up','right','up','left','up','right','up','up',
+            'up','up','right','up','up','right','up','up','right','up','up','left','up','up','left','up','right','up','left','up','left',
+            'useObject(\'Спуск\', 1)','up','right','up','up','right','up','left','up','up','left','up','up',
+            'left','up','up','up','right','right','up','up','left','useObject(\'Ниша в полу\', 1)','right','up','left','up','right','up','left','up','up',
+            'left','up','up','left','up','right','up','up','up','right','up','right','up','up','left','up','up','left','up','up','up',
+            'right','up','up','left','up','left','up','right','up','right','up','left','left','up','right','useObject(\'Ниша в стене\', 1)',
+            'right','right','up','left','up','right','up','right','up','up','left','useObject(\'Спуск в нору\', 1)','up',
+            'useObject(\'Заросший тайник\', 1)','right','right','useObject(\'Подъем\', 1)',
+            'left','up','right','up','up','right','up','up','right','up','left','up','useObject(\'Хитиновый люк\', 1)','up',
+            'useObject(\'Заросший тайник\', 3)',
+            /**
+             * На третий этаж
+             */
+            'right','right','up','useObject(\'Хитиновый люк\', 1)','up','right','up','left','up','up','left','up','up','left','up','up','up','right','up','right',
+            'useObject(\'Спуск в Глубины Грибницы\', 1)','right','up','up','up','up','up','up','up','left','up','useObject(\'Светляк\', 1)','right',
+            'up','up','left','up','right','up','left','left','up','left','up','right','up','up','left','up','right','up','up','up','up','up','up','right','up',
+            'up','up','up','up','up','up','up','up','up','right','up','up','up','right','up','useObject(\'Светляк\', 1)','left','up','up','left',
+            'up','up','up','left','up','up','up','up','left','up','up','up','right','right','up','left','up','up','left','up',
+            'up','up','left','up','up','left','left','up','up','right','up','up','left','up','up','left','up',
+            'up','right','up','up','right','up','left','up','left','left','up','right','up','left','up','up','left','up','up',
+            'up','up','left','up','up','right','up','up','right','up','up','left','up','right',
+            'up','right','up','left','up','left','up','right','up','left','up','up','right','up','up','right','up','up','left',
+            'up','up','up','up','left','up','right','right','up','left','up','up','right','up','up','right','up','left','up','up','left','up','up','left','up','up'
+        ],
+        angelscity: [
+            // 1 этаж
+            'up','right','up','up','left','up','up','up','right','up','up','right','up','useObject(\'Сундук\', 3)','left','left','up','up',
+            'useObject(\'Сундук\', 3)','left','left','up','right','up','up','right','up','up','up','left','up','up','left','up','up','left','right','right',
+            'useObject(\'Останки вашего предшественника\', 3)','left','up','left','right','right','up','useObject(\'Алтарь Бездны\', 1)',
+            'up','left','left','up','up','up','left','left','up','left','left','useObject(\'Останки вашего предшественника\', 3)','left','left',
+            'up','up','left','up','up','up','left','up','up','up','up','up','up','up','useObject(\'Спуск\', 1)',
+            // 2 этаж
+            'up','right','up','left','up','right','up','up','useObject(\'Выбоина\', 2)','left','left','up','right','up','up','right','up',
+            'useObject(\'Выбоина\', 2)','left','left','up','right','up','up','up','up','right','up','useObject(\'Выбоина\', 2)','right',
+            'right','up','left','up','up','up','right','up','up','right','useObject(\'Тележка\', 1)','left','left','useObject(\'Котел\', 1)','right','up','right',
+            'useObject(\'Останки вашего предшественника\', 3)','left','left','up','right','up','up','left','up','up','useObject(\'Останки вашего предшественника\', 3)',
+            'up','right','up','useObject(\'Выбоина\', 2)','right','right','up','left','up','up','left','up','useObject(\'Выбоина\', 2)','right','right',
+            'up','left','up','up','left','up','useObject(\'Выбоина\', 2)','right','right','up','left','up','up','left','up','useObject(\'Выбоина\', 2)','right',
+            'right','up','left','up','useObject(\'Тележка\', 1)','up','left','up','useObject(\'Выбоина\', 2)','left','left',
+            'up','right','up','left','up','up','up','left','useObject(\'Спуск\', 1)',
+            // 3 этаж
+            'up','up','left','up','up','left','useObject(\'Кровать\', 1)','right','up','useObject(\'Кровать\', 1)','left','up','useObject(\'Кровать\', 1)',
+            'right','useObject(\'Сундук\', 1)','left','up','right','useObject(\'Кровать\', 1)','left','left','useObject(\'Кровать\', 1)','left','up','up','right',
+            'up','up','up','left','up','up','useObject(\'Останки вашего предшественника\', 3)','left','up','up','right','up','useObject(\'Кровать\', 1)',
+            'left','up','useObject(\'Сундук\', 1)','right','useObject(\'Кровать\', 1)','left','up','right','useObject(\'Кровать\', 1)','left','left',
+            'useObject(\'Кровать\', 1)','left','up','up','right','up','left','up','up','left','up','right','up','up','left','up',
+            'useObject(\'Сундук\', 1)','up','right','useObject(\'Сундук\', 1)','up','right','up','up','right','up','up','up','right',
+            'up','up','up','left','up','up','right','useObject(\'Кровать\', 1)','left','left','useObject(\'Кровать\', 1)','right','up',
+            'useObject(\'Сундук\', 1)','left','useObject(\'Кровать\', 1)','right','right','useObject(\'Кровать\', 1)','left','up','right',
+            'useObject(\'Кровать\', 1)','right','right','useObject(\'Кровать\', 1)','left'
+        ],
+        demonscity: [
+            //Верхом 1 этаж
+            'up','up','up','up','up','up','up','useObject(\'Камень\', 1)','right','right','up','up','left','up','up','right',
+            'useObject(\'Камень\', 1)','left','up','up','up','up','left','useObject(\'Истлевший скелет\', 3)',
+            'right','right','up','left','up','up','left','up','up','left','up','right','up','up','up','up','up','up','left','up','up','right','up','up',
+            'right','up','up','right','up','left','up','up','right','up','useObject(\'Сундук\', 2)','left','left','up','up','useObject(\'Сундук\', 2)',
+            'left','left','up','right','up','up','right','up','left','up','up','up','up','left','up','up','right','up','up','left','useObject(\'Сундук\', 2)',
+            'right','up','left','useObject(\'Кровать\', 1)','left','up','up','up','left','up','up','left','up','up','left','useObject(\'Сундук\', 2)',
+            'right','up','left','useObject(\'Кровать\', 1)','left','up','up','up','left','up','up','left','up','up','left','useObject(\'Сундук\', 2)',
+            'right','up','left','useObject(\'Кровать\', 1)','left','up','up','up','left','up','up','left','up','up','left','useObject(\'Сундук\', 2)',
+            'right','up','left','useObject(\'Кровать\', 1)','left','up','up','up','left','up','up','left','up','up','left','useObject(\'Сундук\', 1)',
+            'right','up','left','useObject(\'Кровать\', 1)','left','up','up','up','right','up','up','left','useObject(\'Мерцающий Круг\', 1)',
+            'left','up','up','right','up','up','up','right','up','up','left','useObject(\'Сундук\', 2)','right','right','up','left','useObject(\'Сундук\', 2)',
+            'left','up','left','up','up','left','up','up','up','left','up','up','useObject(\'Мерцающий Ключ\', 1)','up','up','up','up','up','up','left',
+            'up','up','right','up','up','up','up','up','up','left','up','right','up','up','right','up','left','up','up','right','useObject(\'Камень\', 1)',
+            'left','left','up','right','up','left','useObject(\'Камень\', 1)','right','right','up',
+            // 1.5 этаж
+            'left','up','up','right','up','useObject(\'Груда мусора\', 2)','left','up','right','up','up','useObject(\'Груда мусора\', 2)','right','up',
+            'up','useObject(\'Груда мусора\', 2)','left','left','up','up','up','up','useObject(\'Истлевший скелет\', 2)','up','right','up','up',
+            // 2 этаж
+            // 3 этаж
+            'up','left','up','up','up','up','right','up','up','up','left','up','up','left','up','up','up','right','up','right','up','left','up','right','up',
+            'left','up','up','useObject(\'Истлевший скелет\', 3)','right','right','up','up','left','up','up','up','right','right','up','up','up','up','left','up',
+            'up','left','up','up','right','up','up','right','up','up','up','left','up','up','left','useObject(\'Груда мусора\', 2)','right','up','up','left',
+            'up','up','up','up','useObject(\'Груда мусора\', 1)','left','left','up','right','up','up','right','up','up','up','right','up','up','left',
+            'useObject(\'Сундук\', 1)','left','up','right','up','up','left','up','up','up','up','up','up','up','up','up','up','up','up','up','left',
+            'up','right','up','up','left','up','up','up','right','useObject(\'Груда мусора\', 2)','left','up','up','right','up','up','right','useObject(\'Груда мусора\', 2)',
+            'left','up','left'
+        ],
+        dreamscity: [
 
-    ]
+        ]
     },
     CONFIG = location.hostname.split('.')[0],
     CURRENT_COMMAND,
     DELAY = 1000,
     DAEMON_INTERVAL = 0;
-    SWEEP_ITEMS = [
-        'http://img.combats.com/i/items/cureMana500_0_gg.gif', //гайка
-        'http://img.combats.com/i/items/cureMana250_0.gif', //гайка
-        'http://img.combats.com/i/items/bb_key1.gif', //гайка
-        'http://img.combats.com/i/items/cureHP45.gif', //гайка
-    ];
+SWEEP_ITEMS = [
+    'http://img.combats.com/i/items/cureMana500_0_gg.gif', //гайка
+    'http://img.combats.com/i/items/cureMana250_0.gif', //гайка
+    'http://img.combats.com/i/items/bb_key1.gif', //гайка
+    'http://img.combats.com/i/items/cureHP45.gif', //гайка
+];
 
 /**
  * Демон посещения пещеры.
@@ -433,7 +462,7 @@ function extractCurrentPosition() {
     var frame = document.getElementsByTagName('iframe')[8],
         ObjectsMap = $(frame).contents().find('map#ObjectsMap area'),
         MoveMap = $(frame).contents().find('map#MoveMap area')
-        positionString = '';
+    positionString = '';
 
     ObjectsMap.each(function (i, element) {
         positionString+= element.coords;
@@ -529,19 +558,21 @@ function startBattle() {
             function() {
                 if (
                     $.inArray($(this).find('img').attr('src'),
-                    [
-                        'http://img.combats.com/i/misc/icons/preparation.gif',
-                        'http://img.combats.com/i/misc/icons/hit_empower.gif',
-                        'http://img.combats.com/i/misc/icons/krit_deepwounds.gif',
-                        'http://img.combats.com/i/misc/icons/hp_enrage.gif',
-                        'http://img.combats.com/i/misc/icons/hp_cleance.gif',
+                        [
+                            'http://img.combats.com/i/misc/icons/preparation.gif',
+                            'http://img.combats.com/i/misc/icons/hit_empower.gif',
+                            'http://img.combats.com/i/misc/icons/krit_deepwounds.gif',
+                            'http://img.combats.com/i/misc/icons/hp_defence.gif',
+                            'http://img.combats.com/i/misc/icons/hp_enrage.gif',
+                            'http://img.combats.com/i/misc/icons/hp_cleance.gif',
+                            'http://img.combats.com/i/misc/icons/spirit_13_prot_100.gif',
 
-                        'http://img.combats.com/i/misc/icons/novice_hit.gif',
-                        'http://img.combats.com/i/misc/icons/hit_strong.gif',
-                        'http://img.combats.com/i/misc/icons/block_activeshield.gif',
+                            'http://img.combats.com/i/misc/icons/novice_hit.gif',
+                            'http://img.combats.com/i/misc/icons/hit_strong.gif',
+                            'http://img.combats.com/i/misc/icons/block_activeshield.gif',
 
-                    ]
-                ) !== -1) {
+                        ]
+                    ) !== -1) {
                     $(this).click();
                 }
             }
