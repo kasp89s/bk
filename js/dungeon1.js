@@ -111,6 +111,7 @@ function riskyControl()
  * Вход в подземку
  */
 function enterDungeon() {
+    clearInterval(DAEMON_INTERVAL);
     try {
         var frame = document.getElementsByTagName('iframe')[8];
         $(frame).contents().find('input[name="pass"]').val('005');
@@ -243,39 +244,44 @@ function checkFuckingGoblin() {
 }
 
 function startAnswerGoblin() {
-    setTimeout(function () {
-        var frame = document.getElementsByTagName('iframe')[8],
-            fuckingLink = $(frame).contents().find('a');
-
-        // Кликаем на первую ссылку
-        fuckingLink[3].click();
+    try {
         setTimeout(function () {
-            // Проверяем угадали ли
             var frame = document.getElementsByTagName('iframe')[8],
-                fuckingLink = $(frame).contents().find('a:contains(\'Какую?\')');
+                fuckingLink = $(frame).contents().find('a');
 
-            // Если не угадали отвечаем опять
-            if (fuckingLink.length === 0) {
-                startAnswerGoblin()
-            } else {
-                fuckingLink[0].click();
-                setTimeout(function () {
-                    var frame = document.getElementsByTagName('iframe')[8],
-                        fuckingLink = $(frame).contents().find('a:contains(\'И что там у тебя есть?\')');
+            // Кликаем на первую ссылку
+            fuckingLink[3].click();
+            setTimeout(function () {
+                // Проверяем угадали ли
+                var frame = document.getElementsByTagName('iframe')[8],
+                    fuckingLink = $(frame).contents().find('a:contains(\'Какую?\')');
 
+                // Если не угадали отвечаем опять
+                if (fuckingLink.length === 0) {
+                    startAnswerGoblin()
+                } else {
                     fuckingLink[0].click();
                     setTimeout(function () {
                         var frame = document.getElementsByTagName('iframe')[8],
-                            fuckingLink = $(frame).contents().find('a:contains(\'Спасибо за это.\')');
+                            fuckingLink = $(frame).contents().find('a:contains(\'И что там у тебя есть?\')');
 
-                        CURRENT_COMMAND-= 1;
                         fuckingLink[0].click();
-                        attackNpc();
+                        setTimeout(function () {
+                            var frame = document.getElementsByTagName('iframe')[8],
+                                fuckingLink = $(frame).contents().find('a:contains(\'Спасибо за это.\')');
+
+                            CURRENT_COMMAND -= 1;
+                            fuckingLink[0].click();
+                            attackNpc();
+                        }, DELAY);
                     }, DELAY);
-                }, DELAY);
-            }
+                }
+            }, DELAY);
         }, DELAY);
-    }, DELAY);
+    } catch (e) {
+        console.log('Ошибка ' + e);
+        attackNpc();
+    }
 }
 
 /**
@@ -413,7 +419,7 @@ function move(action)
         } catch (e) {
             console.log('Ошибка ' + e);
             CURRENT_COMMAND -= 1;
-            setTimeout(startBattle, DELAY * 2);
+            setTimeout(checkFuckingGoblin, DELAY * 2);
         }
     }, DELAY);
 }
@@ -466,6 +472,13 @@ function attackNpc() {
         console.log('Атакую');
         var frame = document.getElementsByTagName('iframe')[8],
             objects = $(frame).contents().find('map#ObjectsMap area[href="javascript:void(0)"]');
+
+        if (typeof objects[0] !== 'undefined' && $.inArray(objects[0].title, ['Мастер Фунгус']) !== -1) {
+            console.log('Йобаный подставной бот пошол нахуй, сука...');
+            checkLoot();
+
+            return false;
+        }
 
         $(objects[0]).trigger('click');
 
