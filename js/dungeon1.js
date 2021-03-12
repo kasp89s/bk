@@ -81,6 +81,11 @@ var COMMAND_MAP = {
             'left','up','up','right','up','useObject(\'Груда мусора\', 2)','left','up','right','up','up','useObject(\'Груда мусора\', 2)','right','up',
             'up','useObject(\'Груда мусора\', 2)','left','left','up','up','up','up','useObject(\'Истлевший скелет\', 2)','up','right','up','up',
             // 2 этаж
+            'up','up','up','up','up_norepeat','left','up','right','up','up','left','up','right','up','left','up','up','up','useObject(\'Груда мусора\', 2)',
+            'left','up','up','up','left','up','right','up','left','useObject(\'Груда мусора\', 2)','right','up','right','up','left','up','up','up','left',
+            'up','useObject(\'Сундук\', 2)','left','left','up','right','up','up','left','up','up','left','up','up','right','up','up','right','up','up',
+            'left','up','up','right','up','right','up','right','up','up','up','useObject(\'Сундук\', 2)','left','left','up','up','right',
+            'useObject(\'Груда мусора\', 2)','left','up','up','right','up','up','right','up','up','up','up','up',
             // 3 этаж
             'up','left','up','up','up','up','right','up','up','up','left','up','up','left','up','up','up','right','up','right','up','left','up','right','up',
             'left','up','up','useObject(\'Истлевший скелет\', 3)','right','right','up','up','left','up','up','up','right','right','up','up','up','up','left','up',
@@ -97,8 +102,9 @@ var COMMAND_MAP = {
     CONFIG = location.hostname.split('.')[0],
     CURRENT_COMMAND,
     DELAY = 1000,
-    DAEMON_INTERVAL = 0;
-SWEEP_ITEMS = [
+    DAEMON_INTERVAL = 0,
+    NEED_TO_CHECK_LOOT = false,
+    SWEEP_ITEMS = [
     'http://img.combats.com/i/items/cureMana500_0_gg.gif', //гайка
     'http://img.combats.com/i/items/cureMana250_0.gif', //гайка
     'http://img.combats.com/i/items/bb_key1.gif', //гайка
@@ -262,7 +268,7 @@ function checkFuckingGoblin() {
         fuckingLink = $(frame).contents().find('a:contains(\'Ээээ....\')');
 
     if (fuckingLink.length === 0) {
-        attackNpc();
+        startBattle();
         return true;
     }
 
@@ -360,7 +366,7 @@ function runNextCommand() {
  * Поднять лут
  */
 function checkLoot() {
-    setTimeout(function () {
+    // setTimeout(function () {
         console.log('Проверяю лут');
         var frame = document.getElementsByTagName('iframe')[8],
             lootItems = $(frame).contents().find('div#items a[style="cursor:pointer"]'),
@@ -383,7 +389,7 @@ function checkLoot() {
         });
 
         setTimeout(runNextCommand, timeout + DELAY);
-    }, DELAY);
+    // }, DELAY);
 }
 
 /**
@@ -418,7 +424,7 @@ function useObject(title, attemps) {
  */
 function move(action)
 {
-    setTimeout(function () {
+    // setTimeout(function () {
         console.log('Иду ' + action);
         try {
             var frame = document.getElementsByTagName('iframe')[8],
@@ -450,7 +456,7 @@ function move(action)
             CURRENT_COMMAND -= 1;
             setTimeout(checkFuckingGoblin, DELAY * 2);
         }
-    }, DELAY);
+    // }, DELAY);
 }
 
 /**
@@ -488,16 +494,24 @@ function isSuccessRun(oldCoords) {
         //Никуда не переместились... Откатуем шаг
         console.log('Сука нас подьебала какая-то мразь! Дадим пизды и продолжим путь');
         CURRENT_COMMAND -= 1;
+        NEED_TO_CHECK_LOOT = true;
+        attackNpc();
+        return false;
     }
 
-    attackNpc();
+    if (NEED_TO_CHECK_LOOT === true) {
+        NEED_TO_CHECK_LOOT = false;
+        checkLoot();
+    } else {
+        runNextCommand();
+    }
 }
 
 /**
  * Доебаться к нпс
  */
 function attackNpc() {
-    setTimeout(function () {
+    // setTimeout(function () {
         console.log('Атакую');
         var frame = document.getElementsByTagName('iframe')[8],
             objects = $(frame).contents().find('map#ObjectsMap area[href="javascript:void(0)"]');
@@ -527,7 +541,7 @@ function attackNpc() {
                 checkLoot();
             }
         }, DELAY);
-    }, DELAY);
+    // }, DELAY);
 }
 
 function isFakeMonster() {
@@ -562,9 +576,9 @@ function startBattle() {
                             'http://img.combats.com/i/misc/icons/preparation.gif',
                             'http://img.combats.com/i/misc/icons/hit_empower.gif',
                             'http://img.combats.com/i/misc/icons/krit_deepwounds.gif',
+                            'http://img.combats.com/i/misc/icons/hp_cleance.gif',
                             'http://img.combats.com/i/misc/icons/hp_defence.gif',
                             'http://img.combats.com/i/misc/icons/hp_enrage.gif',
-                            'http://img.combats.com/i/misc/icons/hp_cleance.gif',
                             'http://img.combats.com/i/misc/icons/spirit_13_prot_100.gif',
 
                             'http://img.combats.com/i/misc/icons/novice_hit.gif',
