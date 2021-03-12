@@ -104,6 +104,12 @@ var COMMAND_MAP = {
     DELAY = 1000,
     DAEMON_INTERVAL = 0,
     NEED_TO_CHECK_LOOT = false,
+    GOBLIN_PIDAR_QUESTIONS = [
+        'Какого мастера можно встретить в подземельях?'
+    ],
+    GOBLIN_PIDAR_ANSWERS = [
+        'Мастера Фунгуса'
+    ],
     SWEEP_ITEMS = [
     'http://img.combats.com/i/items/cureMana500_0_gg.gif', //гайка
     'http://img.combats.com/i/items/cureMana250_0.gif', //гайка
@@ -282,10 +288,39 @@ function startAnswerGoblin() {
     try {
         setTimeout(function () {
             var frame = document.getElementsByTagName('iframe')[8],
-                fuckingLink = $(frame).contents().find('a');
+                fuckingLink = $(frame).contents().find('a'),
+                question = $(frame).contents().find('b')[1].textContent;
 
-            // Кликаем на первую ссылку
-            fuckingLink[3].click();
+            // Проверяем есть ли ответ в списке ответов?
+            var answerIndex = $.inArray(question, GOBLIN_PIDAR_QUESTIONS);
+
+            // Ответ есть.
+            if (answerIndex !== -1) {
+                console.log('Ответ есть, отвечаю');
+                var answerLink = $(frame).contents().find('a:contains(\''+GOBLIN_PIDAR_ANSWERS[answerIndex]+'\')');
+
+                // Кликаем на верную ссылку
+                answerLink[0].click();
+            } else {
+                console.log('Ответа нет сохраняю');
+                // Нужно записать вопрос и варианты ответов например в локал сторейдж...
+                var saveQuestion = {
+                    question: question,
+                    answers: []
+                }
+                fuckingLink.each(function(i, element) {
+                    let question = element.textContent;
+                    if (question.length > 3) {
+                        saveQuestion.answers.push(question);
+                    }
+                });
+
+                localStorage.setItem('question' + Date.now(), JSON.stringify(saveQuestion));
+
+                // Кликаем на первую ссылку
+                fuckingLink[3].click();
+            }
+
             setTimeout(function () {
                 // Проверяем угадали ли
                 var frame = document.getElementsByTagName('iframe')[8],
@@ -293,7 +328,11 @@ function startAnswerGoblin() {
 
                 // Если не угадали отвечаем опять
                 if (fuckingLink.length === 0) {
-                    startAnswerGoblin()
+                    // Кликаем на первую ссылку
+                    fuckingLink[3].click();
+                    setTimeout(function () {
+                        startAnswerGoblin()
+                    }, DELAY);
                 } else {
                     fuckingLink[0].click();
                     setTimeout(function () {
