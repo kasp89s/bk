@@ -451,7 +451,7 @@ function useObject(title, attemps) {
         }
 
         setTimeout(function () {
-            attackNpc();
+            checkLoot();
         }, DELAY * attemps + DELAY);
     }, DELAY);
 }
