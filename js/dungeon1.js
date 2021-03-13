@@ -105,10 +105,12 @@ var COMMAND_MAP = {
     DAEMON_INTERVAL = 0,
     NEED_TO_CHECK_LOOT = false,
     GOBLIN_PIDAR_QUESTIONS = [
-        'Какого мастера можно встретить в подземельях?'
+        'Какого мастера можно встретить в подземельях?',
+        'Какой титул получает победитель турнира?',
     ],
     GOBLIN_PIDAR_ANSWERS = [
-        'Мастера Фунгуса'
+        'Мастера Фунгуса',
+        'Лидер Арены',
     ],
     SWEEP_ITEMS = [
     'http://img.combats.com/i/items/cureMana500_0_gg.gif', //гайка
@@ -218,38 +220,40 @@ function applyMission(callback) {
  * Завершить задания
  */
 function overMission(callback) {
-    var frame = document.getElementsByTagName('iframe')[8],
-        missionButton = $(frame).contents().find('input[value="Задания"]');
-
-    missionButton[0].click();
-
     setTimeout(function () {
         var frame = document.getElementsByTagName('iframe')[8],
-            overButton = $(frame).contents().find('input[value="Завершить задание"]'),
-            delay = 0;
+            missionButton = $(frame).contents().find('input[value="Задания"]');
 
-        overButton.each(function (i, button) {
-            delay = i * DELAY;
-
-            setTimeout(function () {
-                var frame = document.getElementsByTagName('iframe')[8],
-                    overButton = $(frame).contents().find('input[value="Завершить задание"]');
-
-                console.log(overButton[0]);
-                overButton[0].click();
-            }, delay);
-        });
+        missionButton[0].click();
 
         setTimeout(function () {
             var frame = document.getElementsByTagName('iframe')[8],
-                returnButton = $(frame).contents().find('input[value="Вернуться"]');
+                overButton = $(frame).contents().find('input[value="Завершить задание"]'),
+                delay = 0;
 
-            returnButton[0].click();
+            overButton.each(function (i, button) {
+                delay = i * DELAY;
+
+                setTimeout(function () {
+                    var frame = document.getElementsByTagName('iframe')[8],
+                        overButton = $(frame).contents().find('input[value="Завершить задание"]');
+
+                    console.log(overButton[0]);
+                    overButton[0].click();
+                }, delay);
+            });
+
             setTimeout(function () {
-                callback();
-            }, DELAY);
-        }, delay + DELAY);
-    }, DELAY);
+                var frame = document.getElementsByTagName('iframe')[8],
+                    returnButton = $(frame).contents().find('input[value="Вернуться"]');
+
+                returnButton[0].click();
+                setTimeout(function () {
+                    callback();
+                }, DELAY);
+            }, delay + DELAY);
+        }, DELAY);
+    }, DELAY * 2);
 }
 
 /**
@@ -324,10 +328,11 @@ function startAnswerGoblin() {
             setTimeout(function () {
                 // Проверяем угадали ли
                 var frame = document.getElementsByTagName('iframe')[8],
-                    fuckingLink = $(frame).contents().find('a:contains(\'Какую?\')');
+                    fuckingLink = $(frame).contents().find('a'),
+                    watLink = $(frame).contents().find('a:contains(\'Какую?\')');
 
                 // Если не угадали отвечаем опять
-                if (fuckingLink.length === 0) {
+                if (watLink.length === 0) {
                     // Кликаем на первую ссылку
                     fuckingLink[3].click();
                     setTimeout(function () {
