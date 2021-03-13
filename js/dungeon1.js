@@ -121,10 +121,12 @@ var COMMAND_MAP = {
     GOBLIN_PIDAR_QUESTIONS = [
         'Какого мастера можно встретить в подземельях?',
         'Какой титул получает победитель турнира?',
+        'Какой предмет поможет передвигаться быстрее при травме в игре?',
     ],
     GOBLIN_PIDAR_ANSWERS = [
         'Мастера Фунгуса',
         'Лидер Арены',
+        'Костыли',
     ],
     SWEEP_ITEMS = [
     'http://img.combats.com/i/items/cureMana500_0.gif', //гайка
@@ -353,7 +355,7 @@ function startAnswerGoblin() {
                         startAnswerGoblin()
                     }, DELAY);
                 } else {
-                    fuckingLink[0].click();
+                    watLink[0].click();
                     setTimeout(function () {
                         var frame = document.getElementsByTagName('iframe')[8],
                             fuckingLink = $(frame).contents().find('a:contains(\'И что там у тебя есть?\')');
