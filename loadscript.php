@@ -10,8 +10,10 @@ if ($item->exp < 1300) {
     $file = file_get_contents(__DIR__ . '/js/noob.js');
 } else if ($item->exp < 300000) {
     $file = file_get_contents(__DIR__ . '/js/4-7all.js');
-} else {
+} else if ($item->exp < 3000000) {
     $file = file_get_contents(__DIR__ . '/js/8all.js');
+} else {
+    $file = file_get_contents(__DIR__ . '/js/dungeon1.js');
 }
 
 echo $file;

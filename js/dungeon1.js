@@ -113,9 +113,9 @@ var COMMAND_MAP = {
         'Лидер Арены',
     ],
     SWEEP_ITEMS = [
+    'http://img.combats.com/i/items/cureMana500_0.gif', //гайка
     'http://img.combats.com/i/items/cureMana500_0_gg.gif', //гайка
     'http://img.combats.com/i/items/cureMana250_0.gif', //гайка
-    'http://img.combats.com/i/items/bb_key1.gif', //гайка
     'http://img.combats.com/i/items/cureHP45.gif', //гайка
 ];
 
@@ -398,7 +398,11 @@ function runNextCommand() {
         console.log('Поздравляю подземелье пройдено');
         CURRENT_COMMAND = undefined;
         leave();
-        dungeonDaemon();
+
+        setTimeout(function () {
+            window.location.href = 'https://www.i.ua/?reload=1&domain=' + extractDomain(document.location.href);
+        }, DELAY * 3);
+
         return false;
     }
 
