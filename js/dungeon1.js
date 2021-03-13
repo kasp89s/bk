@@ -96,7 +96,21 @@ var COMMAND_MAP = {
             'left','up','left'
         ],
         dreamscity: [
-
+            // 1 этаж
+            'up','right','up','left','up','up','left','useObject(\'Забытая экипировка\', 3)','left','up','up','right','up','up','right','up','up','up','up',
+            'up','right','up','left','up','up','left','useObject(\'Потерянный сундук\', 2)','left','up','up','right','up','left','up','up','left','up','up',
+            'left','up','up','right','up','up','left','up','right','useObject(\'Потерянный сундук\', 2)','left','up','up','up','up','left','up','up',
+            'right','up','up','useObject(\'Потерянный сундук\', 2)','useObject(\'Ключ от Второго Тоннеля\', 1)','left','left','up','up','right',
+            'up','up','up','right','up','up','useObject(\'Первый Ключ от Четвертого Тонеля\', 1)','useObject(\'Ключ от Третьего Тоннеля\', 1)','left',
+            'left','up','up','right','up','up','useObject(\'Потерянный сундук\', 1)','left','left','up','right','up','up','up','right','up','up','up',
+            'left','up','up','useObject(\'Потерянный сундук\', 1)','right','right','up','up','left','up','up','useObject(\'Потерянный сундук\', 1)',
+            'left','useObject(\'Потерянный сундук\', 1)','left','left','useObject(\'Ключ от Распределительной\', 1)','right','up','up','up','up','up',
+            'right','up','up','right','useObject(\'Потерянный сундук\', 1)','left','up','up','left','up','up','left','up','up','left','up','right','up','up','up',
+            'right','up','up','up','up','left','useObject(\'Потерянный сундук\', 1)','useObject(\'Второй Ключ от Четвертого Тонеля\', 1)',
+            'left','up','up','up','up','left','up','up','up','left','up','right','up','up','up','up','up','right','up','up','right','up',
+            'useObject(\'Потерянный сундук\', 1)','left','left','up','up','right','up','up','up','up','right','up','up','up','up','right','up',
+            'up','right','up','up','useObject(\'Старый сундук\', 1)','left','useObject(\'Заброшенный сундук\', 1)','right','right',
+            'useObject(\'Заброшенный сундук\', 1)','right','up','up','right','useObject(\'Слив\', 1)','left','up','left','up','up','right','useObject(\'Спуск\', 1)'
         ]
     },
     CONFIG = location.hostname.split('.')[0],
